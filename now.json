@@ -1,0 +1,17 @@
+{
+	"builds": [
+		{
+			"src": "/server/weather.ts",
+			"use": "@now/node"
+		},
+		{
+			"src": "/server/search.ts",
+			"use": "@now/node"
+		},
+		{ "src": "package.json", "use": "@now/next" }
+	],
+	"routes": [
+		{ "src": "/api/weather", "methods": ["GET"], "dest": "/server/weather.ts" },
+		{ "src": "/api/search", "methods": ["GET"], "dest": "/server/search.ts" }
+	]
+}
