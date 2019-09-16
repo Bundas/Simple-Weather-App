@@ -40,20 +40,23 @@ const Root = () => {
 								return <span>{'Loading cities...'}</span>
 							}
 
-							if (data !== undefined && data.length === 0) {
+							if (data === undefined) {
+								return <span>{'Request failed, please try again'}</span>
+							}
+
+							if (data.length === 0) {
 								return <span>{"Sorry, I didn't find such city :("}</span>
 							}
 
 							return (
 								<>
-									{data !== undefined &&
-										data.map(result => (
-											<div key={result.woeid}>
-												<Link href={`/weather-by-city?woeid=${result.woeid}`}>
-													<a>{result.title}</a>
-												</Link>
-											</div>
-										))}
+									{data.map(result => (
+										<div key={result.woeid}>
+											<Link href={`/weather-by-city?woeid=${result.woeid}`}>
+												<a>{result.title}</a>
+											</Link>
+										</div>
+									))}
 								</>
 							)
 						}}
