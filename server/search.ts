@@ -21,11 +21,10 @@ export default async (req, res) => {
 
 		if (result.ok) {
 			res.status(200)
-			res.send(data)
-			return
+		} else {
+			res.status(400)
 		}
 
-		res.status(400)
 		res.send(data)
 	} catch (error) {
 		res.status(400)
